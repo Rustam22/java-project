@@ -45,7 +45,15 @@ jobs:
       - name : Step 5 - Runs 10 sub commands
         run : mvn -B package --file pom.xml
 
-      - name: Step 6 - List Ubuntu Environment Variables
+      # Step 6 - Setup a chache for Maven
+      - name: Step 6 - Setup a chache for Maven
+        uses: actions/cache@v2 
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+
+      - name: Step 7 - List Ubuntu Environment Variables
         run: env
           
           
