@@ -60,6 +60,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: github-actions-artifact
+          path: staging
 
       - name: Step 8 - List Ubuntu Environment Variables
         run: env
